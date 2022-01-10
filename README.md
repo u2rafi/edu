@@ -2,10 +2,19 @@
 A python programming exercise, processing education dataset
 
 #### Requirements
-* Python3.7
+* Python == 3.9
 * FastAPI
 
 ### Installation, run and testing
+
+
+#### Setup .env file
+copy `.env.example` to `.env` in the project root directory and update contents
+
+```
+MONGO_DSN=<mongo db host dsn> (mongodb://localhost:27017)
+DUCK_DUCK_GO_APT_ENDPOINT=https://api.duckduckgo.com/
+```
 
 #### Run locally 
 ```
