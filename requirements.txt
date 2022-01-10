@@ -1,0 +1,8 @@
+uvicorn
+fastapi
+pymongo
+pandas
+python-multipart
+requests
+pydantic[dotenv]
+pytest-cov

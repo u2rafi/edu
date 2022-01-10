@@ -1,0 +1,16 @@
+World Rank 	Institution 	Location 	National Rank 	Quality of Education 	Alumni Employment 	Quality of Faculty 	Research Performance 	Quality Publications 	Influence 	Citations 	Score
+1	Harvard University	USA	1	2	1	1	1	1	1	1	100
+2	Stanford University	USA	2	10	3	2	10	4	3	2	96.7
+3	Massachusetts Institute of Technology	USA	3	3	11	3	30	15	2	6	95.1
+4	University of Cambridge	United Kingdom	1	5	19	6	12	8	6	19	94.0
+5	University of Oxford	United Kingdom	2	9	25	10	9	5	7	4	93.2
+6	University of California, Berkeley	USA	4	7	52	5	18	12	4	8	92.5
+7	Princeton University	USA	5	4	15	4	146	99	28	27	91.9
+8	Columbia University	USA	6	16	13	8	20	14	10	10	91.4
+9	California Institute of Technology	USA	7	1	200	7	127	81	13	31	91.0
+10	University of Chicago	USA	8	13	22	9	39	22	18	10	90.6
+11	Yale University	USA	9	11	34	12	37	19	11	31	90.3
+12	University of Tokyo	Japan	1	17	8	33	7	17	23	29	90.0
+13	University of Pennsylvania	USA	10	31	9	30	16	11	17	13	89.7
+14	Cornell University	USA	11	14	28	19	31	24	15	40	89.4
+15	University of California, Los Angeles	USA	12	58	63	11	13	10	14	5	89.1

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+      build: .
+      restart: always
+      volumes:
+      - .:/code
+      ports:
+        - 8000:8000
+      expose:
+        - 8000
+      command: bash -c "uvicorn app.main:app --workers 3 --timeout-keep-alive 120 --host 0.0.0.0 --port 8000"
