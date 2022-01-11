@@ -68,6 +68,7 @@ multipart/form-data
 
 year: Year of university ranking
 file: .txt file containing university ranking data
+process_in_background: true/false for running task in background
 ```
 
 CURL
@@ -78,7 +79,8 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -F 'year=2018' \
-  -F 'file=@data-2018.txt;type=text/plain'
+  -F 'file=@data-2018-test.txt;type=text/plain' \
+  -F 'process_in_background=true'
 ```
 
 Python requests
@@ -88,8 +90,11 @@ import requests
 
 url = "http://0.0.0.0:8000/api/v1/submit/"
 
-payload={'year': '2018'}
-files=[
+payload = {
+    'year': '2018',
+    'process_in_background': 'true'
+}
+files = [
   ('file',('file',open('/path/to/file','rb'),'application/octet-stream'))
 ]
 headers = {
@@ -103,5 +108,7 @@ print(response.text)
 
 # Demo
 A demo app has been deployed in heroku docker and can be accessed using this link
+
+Note : For this demo, MongoDB has been deployed in digitalocean
 
 [https://fierce-mountain-82505.herokuapp.com/](https://fierce-mountain-82505.herokuapp.com/)

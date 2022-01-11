@@ -34,7 +34,7 @@ spec:
           - name: BUILD_NUMBER
             value: 1
           command: ["/bin/sh"]
-          args: ["-c", "uvicorn app.main:app --workers 3 --timeout-keep-alive 120 --host 0.0.0.0 --port 8000"]
+          args: ["-c", "uvicorn app.main:app --workers 3 --timeout-keep-alive 5000 --host 0.0.0.0 --port 8000"]
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

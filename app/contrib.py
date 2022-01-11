@@ -63,7 +63,7 @@ class DuckDuckGoAPI(object):
         """
         response = requests.get(self.endpoint, params={'q': keyword, 'format': 'json'})
         if response.status_code == 200:
-            return response.json()
+            return response.json() if response.text != '' else None
         return None
 
 
@@ -108,15 +108,17 @@ class DataProcess(object):
         api = self.info_api_cls()
         response = api.get(u_name)
         if response:
-            content = response.get('Infobox', {}).get('content')
+            content = response.get('Infobox', {}).get('content') if type(response.get('Infobox', {})) is dict else None
+            description = response.get('Abstract')
+            url = None
             if content:
                 df = pd.DataFrame(content)
                 f = {'data_type': 'official_website'}
                 match = df.loc[(df[list(f)] == pd.Series(f)).all(axis=1)]
-                description = response.get('Abstract')
-                web = match.get('value').values[0] if match.get('value').values else None
+                url = match.get('value').values[0] if match.get('value').values else None
+            if description or url:
                 self.data_storage.collection('info') \
-                    .update_or_insert(select={'slug': u_slug}, description=description, url=web, u_slug=u_slug)
+                    .update_or_insert(select={'slug': u_slug}, description=description, url=url, u_slug=u_slug)
 
     def run(self) -> None:
         """
