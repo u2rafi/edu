@@ -108,13 +108,15 @@ class DataProcess(object):
         api = self.info_api_cls()
         response = api.get(u_name)
         if response:
-            df = pd.DataFrame(response.get('Infobox').get('content'))
-            f = {'data_type': 'official_website'}
-            match = df.loc[(df[list(f)] == pd.Series(f)).all(axis=1)]
-            description = response.get('Abstract')
-            web = match.get('value').values[0] if match.get('value').values else None
-            self.data_storage.collection('info') \
-                .update_or_insert(select={'slug': u_slug}, description=description, url=web, u_slug=u_slug)
+            content = response.get('Infobox', {}).get('content')
+            if content:
+                df = pd.DataFrame(content)
+                f = {'data_type': 'official_website'}
+                match = df.loc[(df[list(f)] == pd.Series(f)).all(axis=1)]
+                description = response.get('Abstract')
+                web = match.get('value').values[0] if match.get('value').values else None
+                self.data_storage.collection('info') \
+                    .update_or_insert(select={'slug': u_slug}, description=description, url=web, u_slug=u_slug)
 
     def run(self) -> None:
         """

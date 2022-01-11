@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Depends, UploadFile, File, Form
-
 from .contrib import FileHandler, DataProcess
 from .models import DataInpModel
 from .mongo import MongoStorage
